@@ -1,10 +1,10 @@
-- name:          "reboot host"
+- name:          "reboot_host"
   command:       "sleep 2 & shutdown -r now"
   async:         1
   poll:          0
   ignore_errors: true
 
-- name:          "await restart"
+- name:          "await_restart"
   wait_for:
     host:        "{{ inventory_hostname }}"
     state:       started
