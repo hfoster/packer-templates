@@ -1,4 +1,4 @@
-- name:          reboot host
+- name:          "reboot host"
   command:       "sleep 2 & shutdown -r now"
   async:         1
   poll:          0
