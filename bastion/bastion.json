@@ -19,7 +19,7 @@
         "owners": ["679593333241"],
         "most_recent": true
       },
-      "instance_type": "t3.medium",
+      "instance_type": "t3.nano",
       "ssh_username": "centos",
       "ami_name": "Bastion_AMI_built_with_Packer_{{isotime | clean_ami_name}}",
       "ami_description": "A Linux bastion AMI built on CentOS 7 with HashiCorp Packer at {{isotime | clean_ami_name}}",
