@@ -1,0 +1,49 @@
+- name:           "Enable YUM caching"
+  lineinfile:
+    path:         /etc/yum.conf
+    regexp:       "^keepcache"
+    line:         "keepcache=1"
+
+- name:           "Add YUM repo for EPEL"
+  yum_repository:
+    name:         epel
+    description:  Extra Packages for Enterprise Linux
+    baseurl:      http://download.fedoraproject.org/pub/epel/$releasever/$basearch
+    gpgcheck:     yes
+    gpgkey:       https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7Server
+    enabled:      yes
+
+- name:           "Add YUM repo for Puppet 5"
+  yum_repository:
+    name:         puppet5
+    description:  Puppet 5 Server and Client Tools
+    baseurl:      https://yum.puppetlabs.com/puppet5/el/$releasever/$basearch
+    gpgcheck:     yes
+    gpgkey:       https://yum.puppetlabs.com/RPM-GPG-KEY-puppet
+    enabled:      yes
+
+- name:           "Add YUM repo for The Foreman"
+  yum_repository:
+    name:         foreman-latest
+    description:  The Foreman Infrastructure Management Tool
+    baseurl:      https://yum.theforeman.org/releases/latest/el7/$basearch
+    gpgcheck:     no
+    enabled:      yes
+
+- name:           "Install Extra Packages for Enterprise Linux"
+  yum:
+    name:         epel-release
+    state:        latest
+    update_cache: yes
+
+- name:           "Get the Foreman installer"
+  yum:
+    name:         foreman-installer
+    state:        latest
+    update_cache: yes
+
+- name:           "YUM update"
+  yum:
+    name:         "*"
+    state:        latest
+    update_cache: yes

@@ -1,0 +1,6 @@
+- name:          "Base setup and Install"
+  hosts:         all
+  become:        yes
+  become_method: sudo
+  roles:
+    - setup
